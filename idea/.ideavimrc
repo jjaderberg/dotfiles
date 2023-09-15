@@ -1,0 +1,5 @@
+inoremap jk <Esc>
+set visualbell
+set noerrorbells
+set surround
+set commentary
