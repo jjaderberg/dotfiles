@@ -1,0 +1,5 @@
+= dotfiles
+
+Coordinate some stuff.
+
+If you are not me then this is not for you.
