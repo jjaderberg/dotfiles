@@ -1,0 +1,50 @@
+[alias]
+    ap = add --patch
+    apt = !git status --porcelain --untracked-files=no | cut --delimiter=' ' --fields=3 | vipe | xargs --open-tty git add --patch
+    apu = "!git status --porcelain --untracked-files=all | sed 's/^...//' | vipe | xargs -I % --open-tty sh -c 'git add --intent-to-add %; git add --patch %;'"
+    bd = branch --delete
+    bdf = branch -D
+    br = branch
+    cga = config --global --add
+    ci = commit --verbose
+    cia = commit --amend
+    co = checkout
+    com = co master
+    copr = "!f() { gh pr checkout $1; }; f"
+    cp = cherry-pick
+    dad = !curl -H \"Accept: text/plain\" https://icanhazdadjoke.com/ && echo && git add
+    diffpr = "!f() { git copr $1 && git diff $2 > $1.patch && git copr $3 && git diff $4 > $3.patch && diff $1.patch $3.patch; }; f"
+    fc = "!f() { git fetch \"$1\" \"$2\" && git checkout \"$2\"; }; f"
+    fh = "!git fetch $(git rev-parse --abbrev-ref --symbolic-full-name \"@{upstream}\" | sed -e 's|/| |') && git reset @{u} --hard"
+    fo = fetch origin
+    fom = fetch origin master:master
+    fp = format-patch
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    long = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %C(bold white)%s%Creset %Cgreen(%ci) %C(bold blue)<%an>%Creset%n%b'
+    ls = !git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads | cut -f2
+    pff = push --force-with-lease
+    po = pull origin
+    pro = pull --rebase origin
+    pom = pull origin master
+    prom = pull --rebase origin master
+    rb = rebase
+    rba = rebase --abort
+    rbc = rebase --continue
+    rbi = rebase --interactive
+    rbim = rebase --interactive master
+    rbm = rebase master
+    recent = branch --sort=committerdate
+    # really fetch current -- fetch and hard reset current branch to current remote tracking branch
+    rfc = "!f() { git fetch $(git rev-parse --abbrev-ref --symbolic-full-name "@{upstream}" | sed -e 's|/| |') && git reset @{u} --hard; }; f"
+    st = status
+    track = !git status --porcelain --untracked-files=all | grep '^??' | cut --delimiter=' ' --fields=2 | vipe | xargs --open-tty git add --intent-to-add
+    wat = rev-parse --abbrev-ref --symbolic-full-name @{u}
+[diff]
+    renameLimit = 20000
+[init]
+    defaultBranch = main
+[merge]
+    renameLimit = 20000
+    conflictstyle = diff3
+[push]
+    default = simple
