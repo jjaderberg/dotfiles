@@ -49,14 +49,16 @@ wincmd < shift - r    : yabai -m space --rotate 90
 #   is no next window, exchange with previous window.
 # Meh, not the same.
 wincmd <         x    : yabai -m window --swap recent
-# CTRL-W K
+# CTRL-W K -- move current window to very top
 wincmd < shift - k    : yabai -m window --swap north
-# CTRL-W J
+# CTRL-W J -- move current window to very bottom
 wincmd < shift - j    : yabai -m window --swap south
-# CTRL-W L
+# CTRL-W L -- move current window to far right
 wincmd < shift - l    : yabai -m window --swap east
-# CTRL-W H
+# CTRL-W H -- move current window to far left
 wincmd < shift - h    : yabai -m window --swap west
+# CTRL-W T -- move current window to new tab page
+wincmd < shift - t 	  : (yabai -m window --space next || yabai -m window --space first); yabai -m window --focus recent
 # }}}
 
 # Window resizing .................................................. {{{
