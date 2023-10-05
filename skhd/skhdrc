@@ -83,8 +83,9 @@ wincmd < shift - 0x2E : yabai -m window --resize left:+10:0 || yabai -m window -
 
 # test mode ........................................................ {{{
 :: test @ : yabai -m config active_window_border_color 0xff24ccaa
-cmd - x ; test
+ctrl + alt + cmd - x ; test
 test < cmd - x ; default
+test < escape ; default
 # }}}
 
 # try putting everything into a mode ............................... {{{
